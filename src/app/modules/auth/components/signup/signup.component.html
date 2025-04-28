@@ -1,1 +1,95 @@
-<p>signup works!</p>
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <form
+    [formGroup]="signupForm"
+    (ngSubmit)="onSubmit()"
+    class="w-full max-w-md bg-white p-8 rounded-lg shadow-md"
+  >
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Sign Up</h2>
+
+    <div class="mb-4">
+      <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+      <input
+        id="username"
+        formControlName="username"
+        type="text"
+        placeholder="Enter your username"
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <div *ngIf="userNameError" class="text-red-600 text-sm mt-1">{{ userNameError }}</div>
+    </div>
+
+    <div class="mb-4">
+      <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+      <input
+        id="email"
+        formControlName="email"
+        type="email"
+        placeholder="you@example.com"
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    <div class="mb-4 relative">
+      <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+      <input
+        id="password"
+        formControlName="password"
+        [type]="passwordVisible ? 'text' : 'password'"
+        placeholder="••••••••"
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <button
+        type="button"
+        (click)="passwordVisible = !passwordVisible"
+        class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+      >
+        <i class="fa" [ngClass]="passwordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
+      </button>
+      <div *ngIf="passwordError" class="text-red-600 text-sm mt-1">{{ passwordError }}</div>
+    </div>
+
+    <div class="mb-4">
+      <label for="role" class="block text-sm font-medium text-gray-700 mb-1">Role</label>
+      <select
+        id="role"
+        formControlName="role"
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        <option value="user">User</option>
+        <option value="artist">Artist</option>
+      </select>
+      <div *ngIf="roleError" class="text-red-600 text-sm mt-1">{{ roleError }}</div>
+    </div>
+
+    <div class="mb-4">
+      <label for="profilePicture" class="block text-sm font-medium text-gray-700 mb-1"
+        >Profile Picture</label
+      >
+      <input
+        id="profilePicture"
+        type="file"
+        (change)="onFileChange($event)"
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    <div *ngIf="errorMessage" class="mb-4 text-sm text-red-600">
+      <p *ngIf="errorCode">{{ errorCode }}</p>
+      <p>{{ errorMessage }}</p>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+    >
+      Sign Up
+    </button>
+
+    <div class="mt-4 text-center">
+      <p class="text-sm">
+        Already have an account?
+        <a href="/login" class="text-blue-600 hover:text-blue-800">Login</a>
+      </p>
+    </div>
+  </form>
+</div>

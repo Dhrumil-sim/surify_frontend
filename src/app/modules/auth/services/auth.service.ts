@@ -19,4 +19,7 @@ export class AuthService {
       withCredentials: true,
     });
   }
+  register(formData: FormData): Observable<IUser> {
+    return this.http.post<IUser>(`${this.apiUrl}/register`, formData);
+  }
 }

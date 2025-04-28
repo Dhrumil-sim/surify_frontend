@@ -18,6 +18,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   errorMessage = '';
   errorCode = '';
+  passwordVisible = false;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,

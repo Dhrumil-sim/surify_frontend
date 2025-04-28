@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LoginComponent } from './modules/auth/components/login/login.component';
-import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxSpinnerComponent } from 'ngx-spinner';
+import { ToastrModule } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LoginComponent, NgxSpinnerModule],
+  imports: [RouterOutlet, NgxSpinnerComponent, ToastrModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
